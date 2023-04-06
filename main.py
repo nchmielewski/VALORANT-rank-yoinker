@@ -7,6 +7,7 @@ import time
 import asyncio
 from InquirerPy import inquirer
 
+
 from src.constants import *
 from src.requestsV import Requests
 from src.logs import Logging

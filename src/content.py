@@ -11,10 +11,13 @@ class Content():
         return self.content
 
     def get_latest_season_id(self, content):
-        for season in content["Seasons"]:
-            if season["IsActive"]:
-                self.log(f"retrieved season id: {season['ID']}")
-                return season["ID"]
+        try:
+            for season in content["Seasons"]:
+                if season["IsActive"]:
+                    self.log(f"retrieved season id: {season['ID']}")
+                    return season["ID"]
+        except KeyError:
+            pass # return dummy season ID
 
     def get_all_agents(self):
         rAgents = requests.get("https://valorant-api.com/v1/agents?isPlayableCharacter=true").json()
